@@ -849,69 +849,79 @@ footer strong{
             Your feedback can help us make better games.
         </p>
 
-        <form>
+        <form
+    action="https://formspree.io/f/mnpqozlk"
+    method="POST"
+>
 
-            <div class="form-group">
+    <div class="form-group">
 
-                <label for="name">
-                    Your Name
-                </label>
+        <label for="name">
+            Your Name
+        </label>
 
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                >
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+        >
 
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="rating">
-                    Your Rating
-                </label>
-
-                <select id="rating">
-
-                    <option value="">
-                        Select a rating
-                    </option>
-
-                    <option>⭐ 1 / 5</option>
-                    <option>⭐⭐ 2 / 5</option>
-                    <option>⭐⭐⭐ 3 / 5</option>
-                    <option>⭐⭐⭐⭐ 4 / 5</option>
-                    <option>⭐⭐⭐⭐⭐ 5 / 5</option>
-
-                </select>
-
-            </div>
+    </div>
 
 
-            <div class="form-group">
+    <div class="form-group">
 
-                <label for="message">
-                    Your Feedback
-                </label>
+        <label for="rating">
+            Your Rating
+        </label>
 
-                <textarea
-                    id="message"
-                    placeholder="Write your feedback here..."
-                ></textarea>
+        <select
+            id="rating"
+            name="rating"
+            required
+        >
 
-            </div>
+            <option value="">
+                Select a rating
+            </option>
+
+            <option value="1 / 5">⭐ 1 / 5</option>
+            <option value="2 / 5">⭐⭐ 2 / 5</option>
+            <option value="3 / 5">⭐⭐⭐ 3 / 5</option>
+            <option value="4 / 5">⭐⭐⭐⭐ 4 / 5</option>
+            <option value="5 / 5">⭐⭐⭐⭐⭐ 5 / 5</option>
+
+        </select>
+
+    </div>
 
 
-            <button
-                type="button"
-                class="btn btn-primary feedback-submit"
-                onclick="alert('Thank you for your feedback!')"
-            >
-                SUBMIT FEEDBACK
-            </button>
+    <div class="form-group">
 
-        </form>
+        <label for="message">
+            Your Feedback
+        </label>
+
+        <textarea
+            id="message"
+            name="message"
+            placeholder="Write your feedback here..."
+            required
+        ></textarea>
+
+    </div>
+
+
+    <button
+        type="submit"
+        class="btn btn-primary feedback-submit"
+    >
+        SUBMIT FEEDBACK
+    </button>
+
+</form>
 
     </div>
 
