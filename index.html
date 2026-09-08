@@ -1,0 +1,964 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ADITYA STUDIOS</title>
+
+<!-- ADITYA STUDIOS Browser Icon -->
+<link rel="icon" type="image/png" href="aditya-studios-logo.png">
+
+<meta name="description" content="ADITYA STUDIOS - Creating worlds, building adventures, and turning ideas into unforgettable games.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#06060b;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(6,6,11,.82);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.nav-logo{
+    font-size:21px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.nav-logo span{
+    color:#a765ff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:28px;
+}
+
+nav ul li a{
+    color:#cfcfe0;
+    font-size:13px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#b77cff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px 80px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(135,65,255,.27),transparent 35%),
+        linear-gradient(180deg,#0d0818,#06060b);
+}
+
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    pointer-events:none;
+}
+
+.hero::before{
+    width:380px;
+    height:380px;
+    background:rgba(136,67,255,.15);
+    animation:floatOne 7s ease-in-out infinite;
+}
+
+.hero::after{
+    width:250px;
+    height:250px;
+    background:rgba(80,40,180,.12);
+    animation:floatTwo 9s ease-in-out infinite;
+}
+
+@keyframes floatOne{
+    0%,100%{transform:translate(-20px,0)}
+    50%{transform:translate(20px,-30px)}
+}
+
+@keyframes floatTwo{
+    0%,100%{transform:translate(30px,20px)}
+    50%{transform:translate(-30px,-20px)}
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+}
+
+.tag{
+    display:inline-block;
+    padding:9px 17px;
+    border-radius:50px;
+    border:1px solid rgba(167,101,255,.5);
+    background:rgba(145,76,255,.08);
+    color:#c9a4ff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(52px,9vw,105px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#a765ff;
+    text-shadow:0 0 35px rgba(167,101,255,.5);
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#a5a5b8;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:38px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#914cff;
+    color:#fff;
+    box-shadow:0 0 25px rgba(145,76,255,.3);
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 38px rgba(145,76,255,.55);
+}
+
+.btn-secondary{
+    color:#fff;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.14);
+}
+
+.btn-secondary:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,.08);
+}
+
+/* ================= GENERAL ================= */
+
+section{
+    padding:100px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title small{
+    color:#a765ff;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin-top:10px;
+}
+
+.section-title p{
+    color:#858598;
+    margin-top:12px;
+}
+
+/* ================= GAMES ================= */
+
+.game-card{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:linear-gradient(
+        135deg,
+        rgba(151,78,255,.14),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(176,113,255,.2);
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 25px 80px rgba(0,0,0,.4);
+    transition:.4s;
+}
+
+.game-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(176,113,255,.5);
+}
+
+.game-visual{
+    min-height:420px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+    background:
+        radial-gradient(circle,rgba(143,73,255,.28),transparent 60%),
+        #0b0a13;
+}
+
+.kritikcraft-logo{
+    width:min(85%,430px);
+    max-height:340px;
+    object-fit:contain;
+    filter:drop-shadow(0 20px 35px rgba(0,0,0,.6));
+    transition:.4s;
+}
+
+.game-card:hover .kritikcraft-logo{
+    transform:scale(1.05);
+}
+
+.game-info{
+    padding:55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.status{
+    width:max-content;
+    padding:7px 13px;
+    border-radius:50px;
+    background:rgba(255,183,77,.1);
+    border:1px solid rgba(255,183,77,.3);
+    color:#ffc978;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.game-info h3{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.game-info p{
+    color:#9999ab;
+    line-height:1.7;
+    margin-bottom:28px;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.feature{
+    padding:35px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    transition:.35s;
+}
+
+.feature:hover{
+    transform:translateY(-8px);
+    background:rgba(147,79,255,.08);
+    border-color:rgba(160,95,255,.4);
+}
+
+.feature-icon{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.feature h3{
+    margin-bottom:12px;
+}
+
+.feature p{
+    color:#8f8fa2;
+    line-height:1.6;
+}
+
+/* ================= UPDATES ================= */
+
+.updates{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.update{
+    padding:30px;
+    background:#0d0d15;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+    transition:.3s;
+}
+
+.update:hover{
+    transform:translateY(-6px);
+    border-color:rgba(155,92,255,.35);
+}
+
+.update span{
+    color:#a765ff;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.update h3{
+    margin:14px 0;
+}
+
+.update p{
+    color:#88889a;
+    line-height:1.6;
+}
+
+/* ================= FEEDBACK ================= */
+
+.feedback-box{
+    max-width:750px;
+    margin:auto;
+    padding:40px;
+    background:linear-gradient(
+        145deg,
+        rgba(145,76,255,.10),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(167,101,255,.2);
+    border-radius:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.feedback-box h3{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.feedback-box > p{
+    text-align:center;
+    color:#8f8fa2;
+    margin-bottom:30px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-size:13px;
+    color:#cfcfe0;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+    outline:none;
+    background:#09090f;
+    color:#fff;
+    font-family:inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#a765ff;
+    box-shadow:0 0 15px rgba(167,101,255,.15);
+}
+
+.form-group textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.feedback-submit{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    font-size:14px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.about h2{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.about h2 span{
+    color:#a765ff;
+}
+
+.about p{
+    color:#9696a8;
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:45px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:#666678;
+    background:#050509;
+}
+
+footer strong{
+    color:#a765ff;
+}
+
+.back-top{
+    display:inline-block;
+    margin-top:15px;
+    color:#8e8e9e;
+    font-size:13px;
+    transition:.3s;
+}
+
+.back-top:hover{
+    color:#b77cff;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    nav{
+        padding:0 5%;
+    }
+
+    nav ul{
+        gap:13px;
+    }
+
+    nav ul li a{
+        font-size:10px;
+    }
+
+    section{
+        padding:75px 5%;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .game-card{
+        grid-template-columns:1fr;
+    }
+
+    .game-visual{
+        min-height:300px;
+    }
+
+    .game-info{
+        padding:35px;
+    }
+
+    .game-info h3{
+        font-size:36px;
+    }
+
+    .features,
+    .updates{
+        grid-template-columns:1fr;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .about h2{
+        font-size:36px;
+    }
+
+    .feedback-box{
+        padding:28px 20px;
+    }
+}
+
+@media(max-width:500px){
+
+    .nav-logo{
+        font-size:16px;
+    }
+
+    nav ul{
+        gap:8px;
+    }
+
+    nav ul li a{
+        font-size:8px;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="nav-logo">
+        ADITYA <span>STUDIOS</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#games">GAMES</a></li>
+        <li><a href="#features">FEATURES</a></li>
+        <li><a href="#updates">UPDATES</a></li>
+        <li><a href="#feedback">FEEDBACK</a></li>
+        <li><a href="#about">ABOUT</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="tag">
+            🎮 INDEPENDENT GAME STUDIO
+        </div>
+
+        <h1>
+            ADITYA <span>STUDIOS</span>
+        </h1>
+
+        <p>
+            Creating worlds, building adventures, and turning ideas
+            into unforgettable games.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#games" class="btn btn-primary">
+                EXPLORE GAMES
+            </a>
+
+            <a href="#about" class="btn btn-secondary">
+                ABOUT US
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GAMES ================= -->
+
+<section id="games">
+
+    <div class="section-title">
+
+        <small>OUR GAMES</small>
+
+        <h2>Featured Project</h2>
+
+        <p>
+            A new adventure is being built.
+        </p>
+
+    </div>
+
+    <div class="game-card">
+
+        <div class="game-visual">
+
+            <img
+                src="kritikcraft-logo.png"
+                alt="KritikCraft Game Logo"
+                class="kritikcraft-logo"
+            >
+
+        </div>
+
+        <div class="game-info">
+
+            <div class="status">
+                COMING SOON
+            </div>
+
+            <h3>KritikCraft</h3>
+
+            <p>
+                Enter a world of exploration, creativity and adventure.
+                Build, discover and create your own journey in KritikCraft.
+            </p>
+
+            <a href="#feedback" class="btn btn-primary">
+                GIVE FEEDBACK
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section id="features">
+
+    <div class="section-title">
+
+        <small>WHAT WE CREATE</small>
+
+        <h2>Built For Adventure</h2>
+
+        <p>
+            Our games are designed around creativity and exploration.
+        </p>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">🌍</div>
+
+            <h3>Explore</h3>
+
+            <p>
+                Discover new worlds, environments and hidden adventures.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🧱</div>
+
+            <h3>Create</h3>
+
+            <p>
+                Build, experiment and turn your ideas into something real.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">⚔️</div>
+
+            <h3>Adventure</h3>
+
+            <p>
+                Experience challenges, progression and unforgettable moments.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= UPDATES ================= -->
+
+<section id="updates">
+
+    <div class="section-title">
+
+        <small>DEVELOPMENT</small>
+
+        <h2>Latest Updates</h2>
+
+        <p>
+            Follow the journey as our games take shape.
+        </p>
+
+    </div>
+
+    <div class="updates">
+
+        <div class="update">
+
+            <span>UPDATE 01</span>
+
+            <h3>KritikCraft Development</h3>
+
+            <p>
+                The world of KritikCraft is currently under development.
+            </p>
+
+        </div>
+
+
+        <div class="update">
+
+            <span>UPDATE 02</span>
+
+            <h3>New Ideas</h3>
+
+            <p>
+                New gameplay systems and features are being planned.
+            </p>
+
+        </div>
+
+
+        <div class="update">
+
+            <span>UPDATE 03</span>
+
+            <h3>Future Projects</h3>
+
+            <p>
+                More worlds and adventures are planned for the future.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEEDBACK ================= -->
+
+<section id="feedback">
+
+    <div class="section-title">
+
+        <small>YOUR VOICE MATTERS</small>
+
+        <h2>Give Us Feedback</h2>
+
+        <p>
+            Tell us what you think about ADITYA STUDIOS and KritikCraft.
+        </p>
+
+    </div>
+
+    <div class="feedback-box">
+
+        <h3>💬 Share Your Thoughts</h3>
+
+        <p>
+            Your feedback can help us make better games.
+        </p>
+
+        <form>
+
+            <div class="form-group">
+
+                <label for="name">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="rating">
+                    Your Rating
+                </label>
+
+                <select id="rating">
+
+                    <option value="">
+                        Select a rating
+                    </option>
+
+                    <option>⭐ 1 / 5</option>
+                    <option>⭐⭐ 2 / 5</option>
+                    <option>⭐⭐⭐ 3 / 5</option>
+                    <option>⭐⭐⭐⭐ 4 / 5</option>
+                    <option>⭐⭐⭐⭐⭐ 5 / 5</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="message">
+                    Your Feedback
+                </label>
+
+                <textarea
+                    id="message"
+                    placeholder="Write your feedback here..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-primary feedback-submit"
+                onclick="alert('Thank you for your feedback!')"
+            >
+                SUBMIT FEEDBACK
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="about">
+
+        <h2>
+            Small Team.
+            <span>Big Ideas.</span>
+        </h2>
+
+        <p>
+            ADITYA STUDIOS is an independent game studio focused on
+            creating imaginative worlds, exciting gameplay and memorable
+            adventures.
+            <br><br>
+            Our journey starts with KritikCraft —
+            and this is only the beginning.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026
+    <strong>ADITYA STUDIOS</strong>
+    — All Rights Reserved.
+
+    <br>
+
+    <a href="#home" class="back-top">
+        ↑ Back to Top
+    </a>
+
+</footer>
+
+</body>
+</html>
+```
