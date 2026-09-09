@@ -1,18 +1,21 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ADITYA STUDIOS</title>
+<title>ADITYA STUDIOS | Independent Game Studio</title>
 
-<!-- ADITYA STUDIOS Browser Icon -->
 <link rel="icon" type="image/png" href="aditya-studios-logo.png">
 
-<meta name="description" content="ADITYA STUDIOS - Creating worlds, building adventures, and turning ideas into unforgettable games.">
+<meta name="description" content="ADITYA STUDIOS — Creating worlds, building adventures, and turning ideas into unforgettable games.">
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -20,18 +23,55 @@
     scroll-behavior:smooth;
 }
 
+html{
+    scroll-padding-top:80px;
+}
+
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#06060b;
+    background:#05050a;
     color:#fff;
     overflow-x:hidden;
 }
 
 a{
     text-decoration:none;
+    color:inherit;
 }
 
-/* ================= NAVBAR ================= */
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#05050a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#7138d4;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#9b5cff;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 nav{
     position:fixed;
@@ -39,13 +79,18 @@ nav{
     left:0;
     width:100%;
     height:72px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 7%;
-    background:rgba(6,6,11,.82);
-    backdrop-filter:blur(16px);
+
+    background:rgba(5,5,10,.78);
+    backdrop-filter:blur(18px);
+
     border-bottom:1px solid rgba(255,255,255,.08);
+
     z-index:1000;
 }
 
@@ -53,6 +98,7 @@ nav{
     font-size:21px;
     font-weight:900;
     letter-spacing:2px;
+    white-space:nowrap;
 }
 
 .nav-logo span{
@@ -61,409 +107,988 @@ nav{
 
 nav ul{
     display:flex;
+    align-items:center;
+    gap:25px;
     list-style:none;
-    gap:28px;
 }
 
 nav ul li a{
-    color:#cfcfe0;
-    font-size:13px;
+    position:relative;
+
+    color:#bdbdcc;
+    font-size:12px;
     font-weight:bold;
+    letter-spacing:.8px;
+
+    transition:.3s;
+}
+
+nav ul li a::after{
+    content:"";
+
+    position:absolute;
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:2px;
+
+    background:#a765ff;
+
     transition:.3s;
 }
 
 nav ul li a:hover{
-    color:#b77cff;
+    color:#fff;
 }
 
-/* ================= HERO ================= */
+nav ul li a:hover::after{
+    width:100%;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     text-align:center;
-    padding:120px 20px 80px;
+
+    padding:130px 20px 90px;
+
     position:relative;
     overflow:hidden;
+
     background:
-        radial-gradient(circle at 50% 35%,rgba(135,65,255,.27),transparent 35%),
-        linear-gradient(180deg,#0d0818,#06060b);
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(135,65,255,.28),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(79,35,170,.12),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            #10091d 0%,
+            #07060c 60%,
+            #05050a 100%
+        );
 }
 
-.hero::before,
-.hero::after{
+/* cinematic grid */
+
+.hero::before{
     content:"";
+
     position:absolute;
-    border-radius:50%;
-    filter:blur(90px);
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.7),
+        transparent
+    );
+
     pointer-events:none;
 }
 
-.hero::before{
-    width:380px;
-    height:380px;
-    background:rgba(136,67,255,.15);
-    animation:floatOne 7s ease-in-out infinite;
-}
+/* glow */
 
 .hero::after{
-    width:250px;
-    height:250px;
-    background:rgba(80,40,180,.12);
-    animation:floatTwo 9s ease-in-out infinite;
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(128,61,255,.13);
+
+    filter:blur(100px);
+
+    animation:heroGlow 8s ease-in-out infinite;
+
+    pointer-events:none;
 }
 
-@keyframes floatOne{
-    0%,100%{transform:translate(-20px,0)}
-    50%{transform:translate(20px,-30px)}
-}
+@keyframes heroGlow{
 
-@keyframes floatTwo{
-    0%,100%{transform:translate(30px,20px)}
-    50%{transform:translate(-30px,-20px)}
+    0%,100%{
+        transform:translate(-60px,-20px) scale(1);
+    }
+
+    50%{
+        transform:translate(60px,20px) scale(1.12);
+    }
+
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-    max-width:850px;
+
+    max-width:900px;
 }
 
 .tag{
-    display:inline-block;
-    padding:9px 17px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 18px;
+
     border-radius:50px;
-    border:1px solid rgba(167,101,255,.5);
+
+    border:1px solid rgba(167,101,255,.45);
+
     background:rgba(145,76,255,.08);
+
     color:#c9a4ff;
-    font-size:12px;
+
+    font-size:11px;
     font-weight:bold;
-    letter-spacing:1.5px;
-    margin-bottom:25px;
+    letter-spacing:1.8px;
+
+    margin-bottom:28px;
+
+    box-shadow:
+        0 0 30px rgba(145,76,255,.08);
 }
 
 .hero h1{
-    font-size:clamp(52px,9vw,105px);
-    line-height:.95;
-    letter-spacing:-4px;
-    margin-bottom:25px;
+    font-size:clamp(55px,9vw,110px);
+
+    line-height:.9;
+
+    letter-spacing:-5px;
+
+    margin-bottom:28px;
+
+    text-shadow:
+        0 15px 50px rgba(0,0,0,.45);
 }
 
 .hero h1 span{
     color:#a765ff;
-    text-shadow:0 0 35px rgba(167,101,255,.5);
+
+    text-shadow:
+        0 0 20px rgba(167,101,255,.45),
+        0 0 60px rgba(167,101,255,.2);
 }
 
 .hero p{
-    max-width:650px;
+    max-width:680px;
+
     margin:auto;
-    color:#a5a5b8;
+
+    color:#9e9eaf;
+
     font-size:18px;
-    line-height:1.7;
+
+    line-height:1.8;
+}
+
+.hero-sub{
+    margin-top:15px;
+
+    color:#6f6f82 !important;
+
+    font-size:13px !important;
+
+    letter-spacing:1px;
 }
 
 .buttons{
     display:flex;
+
     justify-content:center;
-    gap:15px;
+
+    gap:14px;
+
     flex-wrap:wrap;
-    margin-top:38px;
+
+    margin-top:40px;
 }
 
 .btn{
-    display:inline-block;
-    padding:14px 25px;
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px 25px;
+
+    min-width:150px;
+
     border-radius:10px;
+
     font-weight:bold;
+
+    font-size:13px;
+
+    letter-spacing:.5px;
+
     transition:.3s;
+
+    cursor:pointer;
 }
 
 .btn-primary{
-    background:#914cff;
+    background:linear-gradient(
+        135deg,
+        #a45cff,
+        #7137d5
+    );
+
     color:#fff;
-    box-shadow:0 0 25px rgba(145,76,255,.3);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 10px 35px rgba(116,54,220,.25);
 }
 
 .btn-primary:hover{
     transform:translateY(-4px);
-    box-shadow:0 0 38px rgba(145,76,255,.55);
+
+    box-shadow:
+        0 15px 45px rgba(145,76,255,.45);
 }
 
 .btn-secondary{
     color:#fff;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.14);
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.13);
 }
 
 .btn-secondary:hover{
     transform:translateY(-4px);
-    background:rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.07);
+
+    border-color:rgba(167,101,255,.35);
 }
 
-/* ================= GENERAL ================= */
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
 
 section{
-    padding:100px 7%;
+    padding:110px 7%;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:55px;
+
+    max-width:750px;
+
+    margin:0 auto 60px;
 }
 
 .section-title small{
     color:#a765ff;
+
     font-weight:bold;
-    letter-spacing:2px;
+
+    letter-spacing:2.5px;
+
+    font-size:11px;
 }
 
 .section-title h2{
-    font-size:42px;
-    margin-top:10px;
+    font-size:44px;
+
+    margin-top:12px;
+
+    letter-spacing:-1px;
 }
 
 .section-title p{
-    color:#858598;
-    margin-top:12px;
+    color:#777789;
+
+    margin-top:14px;
+
+    line-height:1.7;
 }
 
-/* ================= GAMES ================= */
+
+/* =========================================================
+   GAMES
+========================================================= */
 
 .game-card{
-    max-width:1100px;
+    max-width:1150px;
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:1fr 1fr;
-    background:linear-gradient(
-        135deg,
-        rgba(151,78,255,.14),
-        rgba(255,255,255,.025)
-    );
+
+    grid-template-columns:1.05fr .95fr;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(151,78,255,.14),
+            rgba(255,255,255,.025)
+        );
+
     border:1px solid rgba(176,113,255,.2);
-    border-radius:25px;
+
+    border-radius:26px;
+
     overflow:hidden;
-    box-shadow:0 25px 80px rgba(0,0,0,.4);
-    transition:.4s;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.45);
+
+    transition:.45s;
 }
 
 .game-card:hover{
     transform:translateY(-8px);
+
     border-color:rgba(176,113,255,.5);
+
+    box-shadow:
+        0 35px 110px rgba(74,35,150,.18);
 }
 
 .game-visual{
-    min-height:420px;
+    min-height:480px;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    padding:50px;
+
+    padding:55px;
+
+    position:relative;
+
+    overflow:hidden;
+
     background:
-        radial-gradient(circle,rgba(143,73,255,.28),transparent 60%),
-        #0b0a13;
+        radial-gradient(
+            circle at center,
+            rgba(143,73,255,.3),
+            transparent 58%
+        ),
+        linear-gradient(
+            145deg,
+            #111020,
+            #08080f
+        );
+}
+
+.game-visual::before{
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    border:1px solid rgba(167,101,255,.16);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 80px rgba(143,73,255,.13);
+}
+
+.game-visual::after{
+    content:"";
+
+    position:absolute;
+
+    width:360px;
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(167,101,255,.4),
+        transparent
+    );
+
+    transform:rotate(-25deg);
 }
 
 .kritikcraft-logo{
-    width:min(85%,430px);
-    max-height:340px;
+    position:relative;
+
+    z-index:2;
+
+    width:min(88%,450px);
+
+    max-height:350px;
+
     object-fit:contain;
-    filter:drop-shadow(0 20px 35px rgba(0,0,0,.6));
-    transition:.4s;
+
+    filter:
+        drop-shadow(0 25px 35px rgba(0,0,0,.65))
+        drop-shadow(0 0 25px rgba(137,70,255,.18));
+
+    transition:.45s;
 }
 
 .game-card:hover .kritikcraft-logo{
-    transform:scale(1.05);
+    transform:scale(1.06);
 }
 
 .game-info{
-    padding:55px;
+    padding:60px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
 }
 
 .status{
     width:max-content;
+
     padding:7px 13px;
+
     border-radius:50px;
-    background:rgba(255,183,77,.1);
-    border:1px solid rgba(255,183,77,.3);
+
+    background:rgba(255,183,77,.08);
+
+    border:1px solid rgba(255,183,77,.25);
+
     color:#ffc978;
-    font-size:11px;
+
+    font-size:10px;
+
     font-weight:bold;
+
+    letter-spacing:1px;
+
     margin-bottom:20px;
 }
 
 .game-info h3{
-    font-size:45px;
-    margin-bottom:15px;
+    font-size:48px;
+
+    margin-bottom:16px;
+
+    letter-spacing:-1px;
 }
 
 .game-info p{
     color:#9999ab;
-    line-height:1.7;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+}
+
+.game-meta{
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
     margin-bottom:28px;
 }
 
-/* ================= FEATURES ================= */
+.meta{
+    padding:7px 11px;
+
+    border-radius:7px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#858597;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:.7px;
+}
+
+.game-info .btn{
+    width:max-content;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
 
 .features{
-    max-width:1100px;
+    max-width:1150px;
+
     margin:auto;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:22px;
+
+    gap:20px;
 }
 
 .feature{
-    padding:35px;
-    background:rgba(255,255,255,.035);
+    position:relative;
+
+    padding:38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
+
     border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    transition:.35s;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.feature::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #9b5cff,
+        transparent
+    );
+
+    opacity:0;
+
+    transition:.4s;
 }
 
 .feature:hover{
-    transform:translateY(-8px);
-    background:rgba(147,79,255,.08);
-    border-color:rgba(160,95,255,.4);
+    transform:translateY(-9px);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(147,79,255,.1),
+            rgba(255,255,255,.025)
+        );
+
+    border-color:rgba(160,95,255,.35);
+}
+
+.feature:hover::before{
+    opacity:1;
 }
 
 .feature-icon{
-    font-size:35px;
-    margin-bottom:20px;
+    width:55px;
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:15px;
+
+    background:rgba(145,76,255,.1);
+
+    border:1px solid rgba(167,101,255,.15);
+
+    font-size:27px;
+
+    margin-bottom:23px;
 }
 
 .feature h3{
+    font-size:20px;
+
     margin-bottom:12px;
 }
 
 .feature p{
-    color:#8f8fa2;
-    line-height:1.6;
+    color:#858597;
+
+    line-height:1.7;
+
+    font-size:14px;
 }
 
-/* ================= UPDATES ================= */
+
+/* =========================================================
+   DEVELOPMENT STATUS
+========================================================= */
+
+.dev-panel{
+    max-width:1150px;
+
+    margin:0 auto 25px;
+
+    padding:25px 30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:16px;
+}
+
+.dev-left strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:15px;
+}
+
+.dev-left span{
+    color:#777789;
+
+    font-size:12px;
+}
+
+.progress{
+    width:230px;
+
+    height:7px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.07);
+}
+
+.progress-bar{
+    width:35%;
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        #7137d5,
+        #b16cff
+    );
+
+    box-shadow:
+        0 0 15px rgba(167,101,255,.4);
+}
+
+
+/* =========================================================
+   UPDATES
+========================================================= */
 
 .updates{
-    max-width:1100px;
+    max-width:1150px;
+
     margin:auto;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:22px;
+
+    gap:20px;
 }
 
 .update{
-    padding:30px;
-    background:#0d0d15;
+    padding:32px;
+
+    background:#0b0b12;
+
     border:1px solid rgba(255,255,255,.07);
+
     border-radius:18px;
-    transition:.3s;
+
+    transition:.35s;
 }
 
 .update:hover{
-    transform:translateY(-6px);
-    border-color:rgba(155,92,255,.35);
+    transform:translateY(-7px);
+
+    border-color:rgba(155,92,255,.4);
+
+    background:#0e0d16;
 }
 
 .update span{
     color:#a765ff;
-    font-size:11px;
+
+    font-size:10px;
+
     font-weight:bold;
+
+    letter-spacing:1.5px;
 }
 
 .update h3{
-    margin:14px 0;
+    margin:15px 0 12px;
+
+    font-size:18px;
 }
 
 .update p{
-    color:#88889a;
-    line-height:1.6;
+    color:#858597;
+
+    line-height:1.7;
+
+    font-size:14px;
 }
 
-/* ================= FEEDBACK ================= */
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
 
 .feedback-box{
-    max-width:750px;
+    max-width:760px;
+
     margin:auto;
-    padding:40px;
-    background:linear-gradient(
-        145deg,
-        rgba(145,76,255,.10),
-        rgba(255,255,255,.025)
-    );
+
+    padding:45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(145,76,255,.1),
+            rgba(255,255,255,.025)
+        );
+
     border:1px solid rgba(167,101,255,.2);
-    border-radius:22px;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.3);
 }
 
 .feedback-box h3{
     text-align:center;
+
     font-size:30px;
+
     margin-bottom:10px;
 }
 
 .feedback-box > p{
     text-align:center;
-    color:#8f8fa2;
-    margin-bottom:30px;
+
+    color:#858597;
+
+    margin-bottom:32px;
 }
 
 .form-group{
-    margin-bottom:18px;
+    margin-bottom:19px;
 }
 
 .form-group label{
     display:block;
+
     margin-bottom:8px;
-    font-size:13px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
     color:#cfcfe0;
+
+    letter-spacing:.5px;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
     width:100%;
-    padding:14px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,.1);
+
+    padding:15px;
+
+    border-radius:11px;
+
+    border:1px solid rgba(255,255,255,.09);
+
     outline:none;
-    background:#09090f;
+
+    background:#08080e;
+
     color:#fff;
+
     font-family:inherit;
+
+    transition:.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+    color:#555567;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus{
     border-color:#a765ff;
-    box-shadow:0 0 15px rgba(167,101,255,.15);
+
+    box-shadow:
+        0 0 20px rgba(167,101,255,.12);
 }
 
 .form-group textarea{
-    min-height:130px;
+    min-height:140px;
+
     resize:vertical;
 }
 
 .feedback-submit{
     width:100%;
+
     border:none;
+
     cursor:pointer;
-    font-size:14px;
+
+    font-size:13px;
 }
 
-/* ================= ABOUT ================= */
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(110,52,220,.08),
+            transparent 35%
+        );
+}
+
+.contact-box{
+    max-width:800px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:55px 35px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(145,76,255,.12),
+            rgba(255,255,255,.025)
+        );
+
+    border:1px solid rgba(167,101,255,.2);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.3);
+}
+
+.contact-icon{
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.contact-box h3{
+    font-size:30px;
+
+    margin-bottom:14px;
+}
+
+.contact-box p{
+    max-width:600px;
+
+    margin:0 auto 25px;
+
+    color:#858597;
+
+    line-height:1.8;
+}
+
+.contact-note{
+    display:block;
+
+    margin-top:15px;
+
+    color:#5f5f70;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about{
     max-width:850px;
+
     margin:auto;
+
     text-align:center;
 }
 
 .about h2{
-    font-size:45px;
-    margin-bottom:20px;
+    font-size:46px;
+
+    margin-bottom:22px;
+
+    letter-spacing:-1px;
 }
 
 .about h2 span{
@@ -471,30 +1096,69 @@ section{
 }
 
 .about p{
-    color:#9696a8;
-    line-height:1.8;
-    font-size:17px;
+    color:#9292a5;
+
+    line-height:1.9;
+
+    font-size:16px;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-    padding:45px 20px;
+    padding:50px 20px;
+
     text-align:center;
+
     border-top:1px solid rgba(255,255,255,.07);
-    color:#666678;
-    background:#050509;
+
+    color:#5f5f70;
+
+    background:#040408;
 }
 
 footer strong{
     color:#a765ff;
 }
 
+.footer-links{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin:20px 0;
+}
+
+.footer-links a{
+    color:#777789;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#b77cff;
+}
+
 .back-top{
     display:inline-block;
-    margin-top:15px;
-    color:#8e8e9e;
-    font-size:13px;
+
+    margin-top:5px;
+
+    color:#777789;
+
+    font-size:12px;
+
     transition:.3s;
 }
 
@@ -502,9 +1166,12 @@ footer strong{
     color:#b77cff;
 }
 
-/* ================= MOBILE ================= */
 
-@media(max-width:800px){
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
 
     nav{
         padding:0 5%;
@@ -519,15 +1186,7 @@ footer strong{
     }
 
     section{
-        padding:75px 5%;
-    }
-
-    .hero h1{
-        letter-spacing:-2px;
-    }
-
-    .hero p{
-        font-size:16px;
+        padding:85px 5%;
     }
 
     .game-card{
@@ -535,15 +1194,11 @@ footer strong{
     }
 
     .game-visual{
-        min-height:300px;
+        min-height:350px;
     }
 
     .game-info{
-        padding:35px;
-    }
-
-    .game-info h3{
-        font-size:36px;
+        padding:40px;
     }
 
     .features,
@@ -551,23 +1206,26 @@ footer strong{
         grid-template-columns:1fr;
     }
 
-    .section-title h2{
-        font-size:34px;
+    .dev-panel{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
-    .about h2{
-        font-size:36px;
+    .progress{
+        width:100%;
     }
 
-    .feedback-box{
-        padding:28px 20px;
-    }
 }
 
-@media(max-width:500px){
+
+@media(max-width:600px){
+
+    nav{
+        height:65px;
+    }
 
     .nav-logo{
-        font-size:16px;
+        font-size:15px;
     }
 
     nav ul{
@@ -578,24 +1236,89 @@ footer strong{
         font-size:8px;
     }
 
+    nav ul li a::after{
+        display:none;
+    }
+
+    .hero{
+        padding-top:110px;
+    }
+
     .hero h1{
-        font-size:52px;
+        font-size:51px;
+
+        letter-spacing:-3px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .hero-sub{
+        font-size:11px !important;
     }
 
     .buttons{
         flex-direction:column;
+
+        width:100%;
     }
 
     .btn{
         width:100%;
     }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .game-info h3{
+        font-size:37px;
+    }
+
+    .game-info .btn{
+        width:100%;
+    }
+
+    .feedback-box{
+        padding:30px 20px;
+    }
+
+    .contact-box{
+        padding:40px 20px;
+    }
+
+    .about h2{
+        font-size:36px;
+    }
+
 }
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+        scroll-behavior:auto !important;
+        animation:none !important;
+        transition:none !important;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= NAVBAR ================= -->
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav>
 
@@ -604,18 +1327,44 @@ footer strong{
     </div>
 
     <ul>
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#games">GAMES</a></li>
-        <li><a href="#features">FEATURES</a></li>
-        <li><a href="#updates">UPDATES</a></li>
-        <li><a href="#feedback">FEEDBACK</a></li>
-        <li><a href="#about">ABOUT</a></li>
+
+        <li>
+            <a href="#home">HOME</a>
+        </li>
+
+        <li>
+            <a href="#games">GAMES</a>
+        </li>
+
+        <li>
+            <a href="#features">FEATURES</a>
+        </li>
+
+        <li>
+            <a href="#updates">UPDATES</a>
+        </li>
+
+        <li>
+            <a href="#feedback">FEEDBACK</a>
+        </li>
+
+        <li>
+            <a href="#about">ABOUT</a>
+        </li>
+
+        <li>
+            <a href="#contact">CONTACT</a>
+        </li>
+
     </ul>
 
 </nav>
 
 
-<!-- ================= HERO ================= -->
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero" id="home">
 
@@ -634,14 +1383,18 @@ footer strong{
             into unforgettable games.
         </p>
 
+        <p class="hero-sub">
+            ONE IDEA. ONE WORLD. INFINITE POSSIBILITIES.
+        </p>
+
         <div class="buttons">
 
             <a href="#games" class="btn btn-primary">
-                EXPLORE GAMES
+                🎮 EXPLORE GAMES
             </a>
 
             <a href="#about" class="btn btn-secondary">
-                ABOUT US
+                LEARN ABOUT US
             </a>
 
         </div>
@@ -651,7 +1404,10 @@ footer strong{
 </section>
 
 
-<!-- ================= GAMES ================= -->
+
+<!-- =========================================================
+     GAMES
+========================================================= -->
 
 <section id="games">
 
@@ -662,12 +1418,14 @@ footer strong{
         <h2>Featured Project</h2>
 
         <p>
-            A new adventure is being built.
+            The first world from ADITYA STUDIOS is taking shape.
         </p>
 
     </div>
 
+
     <div class="game-card">
+
 
         <div class="game-visual">
 
@@ -679,21 +1437,46 @@ footer strong{
 
         </div>
 
+
         <div class="game-info">
 
             <div class="status">
-                COMING SOON
+                ● IN DEVELOPMENT
             </div>
 
-            <h3>KritikCraft</h3>
+            <h3>
+                KritikCraft
+            </h3>
 
             <p>
                 Enter a world of exploration, creativity and adventure.
-                Build, discover and create your own journey in KritikCraft.
+                Build, discover, survive and create your own journey
+                in a world built around your imagination.
             </p>
 
-            <a href="#feedback" class="btn btn-primary">
-                GIVE FEEDBACK
+
+            <div class="game-meta">
+
+                <div class="meta">
+                    EXPLORATION
+                </div>
+
+                <div class="meta">
+                    BUILDING
+                </div>
+
+                <div class="meta">
+                    ADVENTURE
+                </div>
+
+            </div>
+
+
+            <a
+                href="#feedback"
+                class="btn btn-primary"
+            >
+                💬 GIVE FEEDBACK
             </a>
 
         </div>
@@ -703,7 +1486,10 @@ footer strong{
 </section>
 
 
-<!-- ================= FEATURES ================= -->
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
 
 <section id="features">
 
@@ -711,50 +1497,72 @@ footer strong{
 
         <small>WHAT WE CREATE</small>
 
-        <h2>Built For Adventure</h2>
+        <h2>
+            Built For Adventure
+        </h2>
 
         <p>
-            Our games are designed around creativity and exploration.
+            We focus on creating games where players can explore,
+            create and experience their own stories.
         </p>
 
     </div>
 
+
     <div class="features">
 
+
         <div class="feature">
 
-            <div class="feature-icon">🌍</div>
+            <div class="feature-icon">
+                🌍
+            </div>
 
-            <h3>Explore</h3>
+            <h3>
+                Explore
+            </h3>
 
             <p>
-                Discover new worlds, environments and hidden adventures.
+                Discover new worlds, environments, secrets and
+                adventures waiting around every corner.
             </p>
 
         </div>
 
 
+
         <div class="feature">
 
-            <div class="feature-icon">🧱</div>
+            <div class="feature-icon">
+                🧱
+            </div>
 
-            <h3>Create</h3>
+            <h3>
+                Create
+            </h3>
 
             <p>
-                Build, experiment and turn your ideas into something real.
+                Build structures, experiment with ideas and turn
+                your imagination into something playable.
             </p>
 
         </div>
 
 
+
         <div class="feature">
 
-            <div class="feature-icon">⚔️</div>
+            <div class="feature-icon">
+                ⚔️
+            </div>
 
-            <h3>Adventure</h3>
+            <h3>
+                Adventure
+            </h3>
 
             <p>
-                Experience challenges, progression and unforgettable moments.
+                Face challenges, discover new possibilities and
+                create memorable moments inside the game world.
             </p>
 
         </div>
@@ -764,7 +1572,10 @@ footer strong{
 </section>
 
 
-<!-- ================= UPDATES ================= -->
+
+<!-- =========================================================
+     DEVELOPMENT
+========================================================= -->
 
 <section id="updates">
 
@@ -772,50 +1583,96 @@ footer strong{
 
         <small>DEVELOPMENT</small>
 
-        <h2>Latest Updates</h2>
+        <h2>
+            Behind The Build
+        </h2>
 
         <p>
-            Follow the journey as our games take shape.
+            Follow the journey as KritikCraft continues to grow.
         </p>
 
     </div>
 
+
+    <div class="dev-panel">
+
+        <div class="dev-left">
+
+            <strong>
+                KritikCraft — Development
+            </strong>
+
+            <span>
+                The world is being built piece by piece.
+            </span>
+
+        </div>
+
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+    </div>
+
+
+
     <div class="updates">
 
+
         <div class="update">
 
-            <span>UPDATE 01</span>
+            <span>
+                UPDATE 01
+            </span>
 
-            <h3>KritikCraft Development</h3>
+            <h3>
+                World Development
+            </h3>
 
             <p>
-                The world of KritikCraft is currently under development.
+                The foundation of the KritikCraft world is currently
+                under development.
             </p>
 
         </div>
 
 
+
         <div class="update">
 
-            <span>UPDATE 02</span>
+            <span>
+                UPDATE 02
+            </span>
 
-            <h3>New Ideas</h3>
+            <h3>
+                Gameplay Ideas
+            </h3>
 
             <p>
-                New gameplay systems and features are being planned.
+                New gameplay systems, mechanics and features are being
+                planned for future builds.
             </p>
 
         </div>
 
 
+
         <div class="update">
 
-            <span>UPDATE 03</span>
+            <span>
+                UPDATE 03
+            </span>
 
-            <h3>Future Projects</h3>
+            <h3>
+                Future Projects
+            </h3>
 
             <p>
-                More worlds and adventures are planned for the future.
+                KritikCraft is only the beginning. More worlds and
+                adventures are planned for the future.
             </p>
 
         </div>
@@ -825,7 +1682,10 @@ footer strong{
 </section>
 
 
-<!-- ================= FEEDBACK ================= -->
+
+<!-- =========================================================
+     FEEDBACK
+========================================================= -->
 
 <section id="feedback">
 
@@ -833,102 +1693,195 @@ footer strong{
 
         <small>YOUR VOICE MATTERS</small>
 
-        <h2>Give Us Feedback</h2>
+        <h2>
+            Give Us Feedback
+        </h2>
 
         <p>
-            Tell us what you think about ADITYA STUDIOS and KritikCraft.
+            Your ideas can help shape the future of KritikCraft.
         </p>
 
     </div>
+
 
     <div class="feedback-box">
 
-        <h3>💬 Share Your Thoughts</h3>
+        <h3>
+            💬 Share Your Thoughts
+        </h3>
 
         <p>
-            Your feedback can help us make better games.
+            Tell us what you think and send us your ideas,
+            suggestions or feedback.
         </p>
 
+
+        <!-- FORMSPREE FEEDBACK FORM -->
+
         <form
-    action="https://formspree.io/f/mnpqozlk"
-    method="POST"
->
-
-    <div class="form-group">
-
-        <label for="name">
-            Your Name
-        </label>
-
-        <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
-            required
+            action="https://formspree.io/f/mnpqozlk"
+            method="POST"
         >
 
-    </div>
+
+            <div class="form-group">
+
+                <label for="name">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
 
 
-    <div class="form-group">
 
-        <label for="rating">
-            Your Rating
-        </label>
+            <div class="form-group">
 
-        <select
-            id="rating"
-            name="rating"
-            required
-        >
+                <label for="rating">
+                    Your Rating
+                </label>
 
-            <option value="">
-                Select a rating
-            </option>
+                <select
+                    id="rating"
+                    name="rating"
+                    required
+                >
 
-            <option value="1 / 5">⭐ 1 / 5</option>
-            <option value="2 / 5">⭐⭐ 2 / 5</option>
-            <option value="3 / 5">⭐⭐⭐ 3 / 5</option>
-            <option value="4 / 5">⭐⭐⭐⭐ 4 / 5</option>
-            <option value="5 / 5">⭐⭐⭐⭐⭐ 5 / 5</option>
+                    <option value="">
+                        Select a rating
+                    </option>
 
-        </select>
+                    <option value="1 / 5">
+                        ⭐ 1 / 5
+                    </option>
 
-    </div>
+                    <option value="2 / 5">
+                        ⭐⭐ 2 / 5
+                    </option>
+
+                    <option value="3 / 5">
+                        ⭐⭐⭐ 3 / 5
+                    </option>
+
+                    <option value="4 / 5">
+                        ⭐⭐⭐⭐ 4 / 5
+                    </option>
+
+                    <option value="5 / 5">
+                        ⭐⭐⭐⭐⭐ 5 / 5
+                    </option>
+
+                </select>
+
+            </div>
 
 
-    <div class="form-group">
 
-        <label for="message">
-            Your Feedback
-        </label>
+            <div class="form-group">
 
-        <textarea
-            id="message"
-            name="message"
-            placeholder="Write your feedback here..."
-            required
-        ></textarea>
+                <label for="message">
+                    Your Feedback
+                </label>
 
-    </div>
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your feedback here..."
+                    required
+                ></textarea>
+
+            </div>
 
 
-    <button
-        type="submit"
-        class="btn btn-primary feedback-submit"
-    >
-        SUBMIT FEEDBACK
-    </button>
 
-</form>
+            <button
+                type="submit"
+                class="btn btn-primary feedback-submit"
+            >
+                🚀 SUBMIT FEEDBACK
+            </button>
+
+
+        </form>
 
     </div>
 
 </section>
 
 
-<!-- ================= ABOUT ================= -->
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section
+    id="contact"
+    class="contact-section"
+>
+
+    <div class="section-title">
+
+        <small>STAY CONNECTED</small>
+
+        <h2>
+            Contact ADITYA STUDIOS
+        </h2>
+
+        <p>
+            Have an idea that could make KritikCraft better?
+            We want to hear it.
+        </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <div class="contact-icon">
+            💡
+        </div>
+
+        <h3>
+            Have An Idea?
+        </h3>
+
+        <p>
+            Got a new feature idea, gameplay concept, world idea,
+            or something you think would make KritikCraft more fun?
+            Contact ADITYA STUDIOS and share it with us.
+        </p>
+
+
+        <!-- APNA GMAIL YAHAN DAALNA -->
+
+        <a
+            href="mailto:YOUR-GMAIL-HERE?subject=KritikCraft%20Idea"
+            class="btn btn-primary"
+        >
+            📧 CONTACT ADITYA STUDIOS
+        </a>
+
+
+        <span class="contact-note">
+            We love hearing ideas from players and creators.
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
 <section id="about">
 
@@ -940,12 +1893,16 @@ footer strong{
         </h2>
 
         <p>
-            ADITYA STUDIOS is an independent game studio focused on
-            creating imaginative worlds, exciting gameplay and memorable
-            adventures.
+
+            ADITYA STUDIOS is an independent game studio focused
+            on creating imaginative worlds, exciting gameplay and
+            memorable adventures.
+
             <br><br>
+
             Our journey starts with KritikCraft —
             and this is only the beginning.
+
         </p>
 
     </div>
@@ -953,22 +1910,56 @@ footer strong{
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
     © 2026
-    <strong>ADITYA STUDIOS</strong>
+
+    <strong>
+        ADITYA STUDIOS
+    </strong>
+
     — All Rights Reserved.
 
-    <br>
 
-    <a href="#home" class="back-top">
+    <div class="footer-links">
+
+        <a href="#home">
+            HOME
+        </a>
+
+        <a href="#games">
+            GAMES
+        </a>
+
+        <a href="#updates">
+            UPDATES
+        </a>
+
+        <a href="#feedback">
+            FEEDBACK
+        </a>
+
+        <a href="#contact">
+            CONTACT
+        </a>
+
+    </div>
+
+
+    <a
+        href="#home"
+        class="back-top"
+    >
         ↑ Back to Top
     </a>
 
 </footer>
 
+
 </body>
 </html>
-```
